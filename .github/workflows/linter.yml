@@ -20,8 +20,22 @@ jobs:
         with:
           node-version: 20.x
 
-      - name: Install dependencies
-        run: npm i
+      # ---------- server ----------
 
-      - name: Run linter
+      - name: Install server dependencies
+        run: npm i
+        working-directory: server
+
+      - name: Lint server
         run: npm run lint
+        working-directory: server
+
+      # ---------- client ----------
+
+      - name: Install client dependencies
+        run: npm i
+        working-directory: client
+
+      - name: Lint client
+        run: npm run lint
+        working-directory: client
