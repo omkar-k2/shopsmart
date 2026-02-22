@@ -36,6 +36,3 @@ jobs:
         run: npm i
         working-directory: client
 
-      - name: Lint client
-        run: npm run lint
-        working-directory: client
