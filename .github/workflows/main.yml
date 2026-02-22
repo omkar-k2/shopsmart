@@ -1,4 +1,0 @@
-name: Integration
-
- on:
-   workflow_dispatch:
