@@ -2,9 +2,9 @@ name: New Integeration
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -26,13 +26,13 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: cd backend && npm i
+        run: cd server && npm i
 
       - name: Run linter
-        run: cd backend && npm run lint
+        run: cd server && npm run lint
 
       - name: Run tests
-        run: cd backend && npm run test
+        run: cd server && npm run test
 
       - name: Build (optional)
-        run: cd backend && npm run build
+        run: cd server && npm run build
