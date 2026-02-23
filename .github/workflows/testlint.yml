@@ -1,0 +1,41 @@
+name: Integration
+
+# Step 1: Define the triggers
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch: # Allows you to click a button to run it manually
+
+jobs:
+  # Step 2: Configure the Job
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x] # Testing across multiple versions
+
+    # Step 3: Define the Steps
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm' # Speeds up the run
+
+      - name: Install Dependencies
+        run: npm i
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Run Tests
+        run: npm run test
+
+      - name: Build Project
+        run: npm run build
