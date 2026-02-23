@@ -25,13 +25,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        run: cd server && npm install
+        run: cd client && npm install
 
       - name: Run linter
-        run: cd server && npm run lint
+        run: cd client && npm run lint
 
       - name: Run tests
-        run: cd server && npm run test
+        run: cd client && npm run test
 
       - name: Build (optional)
-        run: cd server && npm run build
+        run: cd client && npm run build
